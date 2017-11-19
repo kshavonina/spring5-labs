@@ -22,7 +22,7 @@ class HelloWorldTest {
 
     @Test
     void testInitPerson() {
-        Person person = context.getBean("person", Person.class);
+        Person person = (UsualPerson) context.getBean("person");
         assertThat(person, is(getExpectedPerson()));
     }
 
