@@ -24,10 +24,21 @@ junitPlatform {
     logManager 'org.apache.logging.log4j.jul.LogManager'
 }
 
+configurations {
+    testCompile.extendsFrom compileOnly
+}
+
 dependencies {
     compile 'org.apache.logging.log4j:log4j-jul:+',
             'org.apache.logging.log4j:log4j-core:+',
+
             'org.springframework:spring-context:+',
+
+            // AOP
+            'org.aspectj:aspectjrt:+',
+            'aopalliance:aopalliance:+',
+            'org.aspectj:aspectjweaver:+',
+
             'io.vavr:vavr:+'
 
     compileOnly 'org.projectlombok:lombok:+',
