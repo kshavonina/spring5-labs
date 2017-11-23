@@ -26,4 +26,11 @@
         <value>asd@asd.ru</value>
         <value>+7-234-456-67-89</value>
     </util:list>
+
+    <bean id="bar" class="lab.model.ApuBar" />
+
+    <bean id="customer" class="lab.model.Customer">
+        <property name="name" value="Homer" />
+        <property name="broke" value="false" />
+    </bean>
 </beans>

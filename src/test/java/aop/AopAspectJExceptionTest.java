@@ -16,9 +16,8 @@ import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration("classpath:application-context.xml")
+@ContextConfiguration("classpath:ioc.xml")
 class AopAspectJExceptionTest {
-
 	@Autowired
 	private Bar bar;
     

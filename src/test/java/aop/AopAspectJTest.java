@@ -18,7 +18,6 @@ import static org.springframework.test.util.AssertionErrors.assertTrue;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("classpath:ioc.xml")
 class AopAspectJTest {
-
 	@Autowired
     private Bar bar;
     
@@ -34,13 +33,13 @@ class AopAspectJTest {
 
     @Test
     void testBeforeAdvice() {
-        assertTrue("Before advice is not good enought...", sout.contains("Hello"));
-        assertTrue("Before advice is not good enought...", sout.contains("How are you doing?"));
+        assertTrue("Before advice is not good enough...", sout.contains("Hello"));
+        assertTrue("Before advice is not good enough...", sout.contains("How are you doing?"));
     }
 
     @Test
     void testAfterAdvice() {
-        assertTrue("After advice is not good enought...", sout.contains("Good Bye!"));
+        assertTrue("After advice is not good enough...", sout.contains("Good Bye!"));
     }
 
     @Test
@@ -50,8 +49,8 @@ class AopAspectJTest {
 
     @Test
     void testAroundAdvice() {
-        assertTrue("Around advice is not good enought...", sout.contains("Hi!"));
-        assertTrue("Around advice is not good enought...", sout.contains("See you!"));
+        assertTrue("Around advice is not good enough...", sout.contains("Hi!"));
+        assertTrue("Around advice is not good enough...", sout.contains("See you!"));
     }
 
     @Test
