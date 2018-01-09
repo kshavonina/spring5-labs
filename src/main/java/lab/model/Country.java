@@ -1,24 +1,9 @@
 package lab.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public interface Country {
+    int getId();
 
-import java.io.Serializable;
+    String getName();
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Country implements Serializable {
-
-    private int id;
-
-    private String name;
-
-    private String codeName;
-
-    public Country(String name, String codeName) {
-        this.name = name;
-        this.codeName = codeName;
-    }
+    String getCodeName();
 }

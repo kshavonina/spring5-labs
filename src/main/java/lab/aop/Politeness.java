@@ -1,39 +1,47 @@
 package lab.aop;
 
-import lab.model.Customer;
-import lab.model.Squishee;
-import org.aspectj.lang.JoinPoint;
+import lab.model.Drink;
+import lab.model.Person;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.stereotype.Component;
+
+import static java.lang.System.out;
 
 @Aspect
+@Component
 public class Politeness {
-    @Before("execution(* sellSquishee(..))")
-    public void sayHello(JoinPoint joinPoint) {
-        System.out.println("Hello " + ((Customer) joinPoint.getArgs()[0]).getName() + ". How are you doing? \n");
+
+    @Pointcut("execution(* sellSquishee(..))")
+    private void sellSquisheePointCut() {
     }
 
-    @AfterReturning(pointcut = "execution(* sellSquishee(..))",
-            returning = "retVal", argNames = "retVal")
-    public void askOpinion(Object retVal) {
-        System.out.println(("Is " + ((Squishee) retVal).getName() + " Good Enough? \n"));
+    @Before("sellSquisheePointCut() && args(person)")
+    public void sayHello(Person person) {
+        out.printf("Hello %s. How are you doing?%n", person.getName());
     }
 
-    @AfterThrowing("execution(* sellSquishee(..))")
+    @AfterReturning(pointcut = "sellSquisheePointCut()",
+            returning = "drink")
+    public void askOpinion(Drink drink) {
+        out.printf("Is %s Good Enough?%n", drink.getName());
+    }
+
+    @AfterThrowing("sellSquisheePointCut()")
     public void sayYouAreNotAllowed() {
-        System.out.println("Hmmm... \n");
+        out.println("Hmmm...");
     }
 
-    @After("execution(* sellSquishee(..))")
+    @After("sellSquisheePointCut()")
     public void sayGoodBye() {
-        System.out.println("Good Bye! \n");
+        out.println("Good Bye!");
     }
 
-    @Around("execution(* sellSquishee(..))")
+    @Around("sellSquisheePointCut()")
     public Object sayPoliteWordsAndSell(ProceedingJoinPoint pjp) throws Throwable {
-        System.out.println(("Hi! \n"));
+        out.println(("Hi!"));
         Object retVal = pjp.proceed();
-        System.out.println(("See you! \n"));
+        out.println(("See you!"));
         return retVal;
     }
 }

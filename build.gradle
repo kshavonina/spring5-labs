@@ -3,9 +3,10 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 10
 
 repositories {
+    flatDir { dirs './lib' }
     mavenCentral()
 }
 
@@ -14,7 +15,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.2'
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.1.0-M1'
     }
 }
 
@@ -41,7 +42,10 @@ dependencies {
 
             'io.vavr:vavr:+'
 
-    compileOnly 'org.projectlombok:lombok:+',
+    // JDBC
+    testRuntimeOnly 'com.h2database:h2:+'
+
+    compileOnly ':lombok-edge:', //'org.projectlombok:lombok:+',
             'edu.washington.cs.types.checker:checker-framework:+'
 
     testCompile 'org.junit.jupiter:junit-jupiter-api:+',
@@ -53,6 +57,8 @@ dependencies {
 
 task Wrapper(type: Wrapper) {
     description = 'Generates gradlew[.bat] scripts'
-    gradleVersion = '4.3.1'
+    gradleVersion = '4.4-rc-1'
     distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
 }
+
+
