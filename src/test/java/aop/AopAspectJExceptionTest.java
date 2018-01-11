@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.io.IOException;
+
 import static common.TestUtils.fromSystemOut;
 import static common.TestUtils.setValue2Field;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -36,9 +38,9 @@ class AopAspectJExceptionTest {
     }
 
     @Test
-    void testAfterThrowingAdvice() {
+    void testAfterThrowingAdvice() throws IOException {
 
-        val sout = fromSystemOut(() ->
+        String sout = fromSystemOut(() ->
                 assertThrows(CustomerBrokenException.class, () ->
                         bar.sellSquishee(person)));
 
@@ -48,7 +50,7 @@ class AopAspectJExceptionTest {
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown() throws NoSuchFieldException, IllegalAccessException {
         setValue2Field(person,"broke", false);
     }
 }

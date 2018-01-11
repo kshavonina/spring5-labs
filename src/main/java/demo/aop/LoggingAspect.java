@@ -14,11 +14,11 @@ public class LoggingAspect {
         String methodName = thisJoinPoint.getSignature().getName();
         Object[] methodArgs = thisJoinPoint.getArgs();
 
-        log.info("Call method {} with args {}", methodName, methodArgs);
+        System.out.println("Call method {} with args {}" + methodName + methodArgs);
 
         Object result = thisJoinPoint.proceed();
 
-        log.info("Method {} returns {}", methodName, result);
+        System.out.println("Method {} returns {}" + methodName + result);
         return result;
     }
 }

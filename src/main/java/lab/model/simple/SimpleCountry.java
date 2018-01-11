@@ -13,4 +13,5 @@ public class SimpleCountry implements Country, Serializable {
     private String name;
 
     private String codeName;
+
 }

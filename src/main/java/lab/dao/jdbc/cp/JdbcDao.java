@@ -19,7 +19,7 @@ public interface JdbcDao extends Supplier<Connection> {
     }
 
     @SneakyThrows
-    default void withConnection(CheckedConsumer<Connection> connectionConsumer) {
+    default void withConnection(CheckedConsumer<Connection, Throwable> connectionConsumer) {
         try (val con = get()) {
             connectionConsumer.accept(con);
         }

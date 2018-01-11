@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.io.IOException;
+
 import static common.TestUtils.fromSystemOut;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
@@ -27,7 +29,7 @@ class AopAspectJTest {
 	private String sout;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         sout = fromSystemOut(() -> bar.sellSquishee(person));
     }
 

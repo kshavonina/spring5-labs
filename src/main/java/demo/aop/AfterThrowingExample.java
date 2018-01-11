@@ -14,7 +14,7 @@ public class AfterThrowingExample {
             pointcut = "demo.aop.SystemArchitecture.dataAccessOperation()",
             throwing = "ex")
     public void doRecoveryActions(Exception ex) {
-        log.error(ex.getMessage());
+        System.out.println(ex.getMessage());
         //...
     }
 

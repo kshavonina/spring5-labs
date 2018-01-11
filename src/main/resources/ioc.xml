@@ -5,7 +5,8 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <import resource="application-context.xml"/>
     <context:component-scan base-package="lab.model"/>
@@ -30,10 +31,5 @@
         <value>+7-234-456-67-89</value>
     </util:list>
 
-    <bean id="bar" class="lab.model.ApuBar" />
-
-    <bean id="customer" class="lab.model.Customer">
-        <property name="name" value="Homer" />
-        <property name="broke" value="false" />
-    </bean>
+    <bean id="bar" class="lab.model.simple.ApuBar" />
 </beans>
