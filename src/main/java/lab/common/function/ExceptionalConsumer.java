@@ -1,9 +1,14 @@
-package lab.common;
+package lab.common.function;
 
 import java.util.function.Consumer;
 
 @FunctionalInterface
-public interface CheckedConsumer<T, E extends Throwable> extends Consumer<T> {
+public interface ExceptionalConsumer<T, E extends Throwable> extends Consumer<T> {
+
+    static <T, E extends Exception> Consumer<T> toUncheckedConsumer(
+            ExceptionalConsumer<T, E> exceptionalConsumer) {
+        return exceptionalConsumer;
+    }
 
     void acceptThrows(T t) throws E;
 

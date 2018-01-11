@@ -10,6 +10,7 @@ public class HwJdbc implements JdbcDao {
     private static final String DRIVER = "org.h2.Driver";
     private static final String USER = "";
     private static final String PASSWORD = "";
+
     private static final String SQL_INIT = "CREATE TABLE Person (" +
             "  id         INT PRIMARY KEY AUTO_INCREMENT," +
             "  first_name VARCHAR(255) NOT NULL," +
@@ -21,6 +22,7 @@ public class HwJdbc implements JdbcDao {
             "  address    VARCHAR(255)," +
             "  telephone  VARCHAR(15)" +
             ")";
+
     private static final String SQL_INSERT = "INSERT INTO Person (first_name, last_name, permission, dob, email, password, address, telephone)" +
             " VALUES ('Jose', 'Eglesias', TRUE, '1980-06-15', 'Jose_Eglesias@mail.es', 'qwerty', 'Franco squere, 5/1, 10'," +
             " '+38007654321')";

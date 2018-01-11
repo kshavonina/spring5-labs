@@ -40,10 +40,14 @@ dependencies {
             'aopalliance:aopalliance:+',
             'org.aspectj:aspectjweaver:+',
 
+            // C3P0
+            'com.mchange:c3p0:+',
+            'org.springframework:spring-jdbc:+',
+
             'io.vavr:vavr:+'
 
-    // JDBC
-    testRuntimeOnly 'com.h2database:h2:+'
+    // H2
+    testRuntime 'com.h2database:h2:+'
 
     compileOnly ':lombok-edge:', //'org.projectlombok:lombok:+',
             'edu.washington.cs.types.checker:checker-framework:+'
